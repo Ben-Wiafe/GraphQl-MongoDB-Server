@@ -1,0 +1,33 @@
+
+// The current database to use.
+use ('testData');
+
+db.book.insertMany([
+     {"title":"Operative radical time-frame","isbn":"514401537-9","pages":475,"genre":"Sci-Fi"},
+{ "title":"Ameliorated logistical support","isbn":"916327629-1","pages":873,"genre":"Thriller"},
+{"title":"Future-proofed client-server intranet","isbn":"285764652-6","pages":71,"genre":"Crime|Drama|Horror|Thriller"},
+{"title":"Advanced upward-trending database","isbn":"220287783-5","pages":520,"genre":"Romance"},
+{"title":"Reactive next generation paradigm","isbn":"784171168-9","pages":720,"genre":"Crime|Film-Noir|Mystery|Thriller"},
+{"title":"Synergistic logistical toolset","isbn":"343926688-5","pages":655,"genre":"Drama|War"},
+{"title":"Synergized multi-tasking pricing structure","isbn":"695733615-8","pages":976,"genre":"Mystery|Sci-Fi|Thriller"},
+{"id":"3364451672","title":"Realigned demand-driven structure","isbn":"028137511-9","pages":337,"genre":"Documentary"},
+{"title":"Ameliorated grid-enabled framework","isbn":"040003835-8","pages":353,"genre":"Documentary"},
+{"title":"Synergistic attitude-oriented attitude","isbn":"910245658-3","pages":661,"genre":"Action|Comedy|Romance"},
+{"title":"Progressive well-modulated conglomeration","isbn":"602172689-8","pages":370,"genre":"Crime|Drama|Mystery"},
+{"title":"Proactive transitional installation","isbn":"862744375-0","pages":182,"genre":"Drama"},
+{"title":"Cloned modular instruction set","isbn":"333840057-8","pages":679,"genre":"Crime|Thriller"},
+{"title":"Profit-focused bandwidth-monitored methodology","isbn":"213380495-1","pages":439,"genre":"Animation|Children|Fantasy"},
+{"title":"Innovative well-modulated solution","isbn":"604346611-2","pages":778,"genre":"Comedy|Drama|Romance"},
+{"title":"Versatile high-level attitude","isbn":"176459995-0","pages":276,"genre":"Comedy|Drama"},
+{"title":"Function-based systemic leverage","isbn":"419164623-0","pages":603,"genre":"Drama|Romance"},
+{"title":"Persistent stable model","isbn":"973257641-3","pages":273,"genre":"Drama|Mystery|Thriller"},
+{"title":"Intuitive 24/7 capacity","isbn":"710851524-5","pages":192,"genre":"Adventure|Crime|Documentary"},
+{"title":"Synergistic hybrid approach","isbn":"192928678-3","pages":51,"genre":"Comedy|Fantasy|Musical|Romance"},
+{"title":"Fully-configurable discrete alliance","isbn":"774904975-4","pages":187,"genre":"Comedy|Drama"},
+{"title":"Synchronised client-driven extranet","isbn":"234236197-1","pages":821,"genre":"Drama"},
+{"title":"Sharable transitional throughput","isbn":"179181353-4","pages":987,"genre":"Comedy"},
+{"title":"Face to face secondary budgetary management","isbn":"528088501-0","pages":919,"genre":"Drama|Horror|Mystery|Thriller"},
+{"title":"Universal bi-directional customer loyalty","isbn":"591789148-6","pages":15,"genre":"Adventure|Animation|Children|Fantasy"}
+])
+
+db.book.find().pretty()

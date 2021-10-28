@@ -46,6 +46,24 @@ const port = 4000;
 
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/testData')
+.then(()=>{
+  console.log("Connected..");
+})
+.catch(error => handleError(error));
+
+  var Schema = mongoose.Schema;
+
+   var book = new Schema({
+     title:  String,
+     author: String,
+      pages: Number,
+      isbn: String,
+      genre: String
+   }); 
+       module.exports = mongoose.model('collectioame', book);
 
 const app = express();
 
@@ -56,6 +74,10 @@ app.use(
     graphiql: true,
   })
 );
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.listen(port, () => {
   console.log("Server running on port 4000");

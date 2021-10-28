@@ -1,0 +1,39 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('testData');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against the correct database and collection.
+
+
+// Insert a few documents into the Author collection.
+db.author.insertMany([
+    {"id":"1599949466","first_name":"Lindsy","last_name":"Milillo","gender":"Polygender","books_written":50},
+{"id":"7097855509","first_name":"Pebrook","last_name":"Oylett","gender":"Polygender","books_written":32},
+{"id":"9637274731","first_name":"Allys","last_name":"Liverock","gender":"Polygender","books_written":29},
+{"id":"4904842006","first_name":"Marcy","last_name":"Enderle","gender":"Genderqueer","books_written":24},
+{"id":"3428372867","first_name":"Gar","last_name":"Flowerden","gender":"Genderqueer","books_written":20},
+{"id":"3942897261","first_name":"Matthus","last_name":"Deniske","gender":"Male","books_written":28},
+{"id":"2387956443","first_name":"Ardisj","last_name":"Quantrell","gender":"Agender","books_written":22},
+{"id":"6406125223","first_name":"Fenelia","last_name":"De Gouy","gender":"Bigender","books_written":49},
+{"id":"7687936159","first_name":"Ravi","last_name":"Picardo","gender":"Polygender","books_written":31},
+{"id":"1510757740","first_name":"Mathew","last_name":"Chieco","gender":"Genderfluid","books_written":37},
+{"id":"8578378784","first_name":"Chryste","last_name":"Blunt","gender":"Male","books_written":30},
+{"id":"9720339845","first_name":"Desi","last_name":"Suthworth","gender":"Genderfluid","books_written":18},
+{"id":"0705291979","first_name":"Ragnar","last_name":"Antal","gender":"Polygender","books_written":33},
+{"id":"0605026181","first_name":"Nanette","last_name":"Francino","gender":"Non-binary","books_written":27},
+{"id":"1163079235","first_name":"Del","last_name":"Syms","gender":"Bigender","books_written":19},
+{"id":"3267284546","first_name":"Cynthy","last_name":"Van der Velde","gender":"Bigender","books_written":2},
+{"id":"6549956404","first_name":"Brander","last_name":"Krink","gender":"Male","books_written":32},
+{"id":"6869262039","first_name":"Xerxes","last_name":"Wild","gender":"Bigender","books_written":33},
+{"id":"0159516226","first_name":"Corinna","last_name":"Neggrini","gender":"Bigender","books_written":10},
+{"id":"7413333651","first_name":"Gus","last_name":"Loughrey","gender":"Polygender","books_written":14}]
+ );
+
+// Run a find command to view items sold on April 4th, 2014.
+db.author.find().pretty()
+
