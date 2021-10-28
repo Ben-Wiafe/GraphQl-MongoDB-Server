@@ -63,7 +63,7 @@ mongoose.connect('mongodb://localhost:27017/testData')
       isbn: String,
       genre: String
    }); 
-       module.exports = mongoose.model('collectioame', book);
+       module.exports = mongoose.model('collectionname=', book);
 
 const app = express();
 
