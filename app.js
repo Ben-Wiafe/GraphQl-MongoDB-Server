@@ -7,56 +7,51 @@ const lodash = require("lodash");
 
 const port = 4000;
 
-// const typeDefs = gql`
-//   type Book {
-//     id: String!
-//     name: String!
-//     genre: String!
-//     pages: Int!
-//     author:
-//   }
+const typeDefs = gql`
+  type Book {
+    id: String!
+    title: String!
+    genre: String!
+    pages: Int!
+  }
 
-//   type Query {
-//     book(id: String): Book
-//     books: [Book]
-//   }
+  type Query {
+    book(id: String): Book
+    books: [Book]
+  }
+`;
 
-//   # type Mutation {
-//   #   add_book
-//   # }
-// `;
+const resolvers = {
+  Query: {
+    books: () => books,
+    book: (parent, args) => lodash.find(books, { id: args.id }),
+  },
+};
 
-// const resolvers = {
-//   Query: {
-//     books: () => books,
-//     book: (parent, args) => lodash.find(books, { id: args.id }),
-//   },
-// };
+const server = new ApolloServer({ typeDefs, resolvers });
 
-// const server = new ApolloServer({ typeDefs, resolvers });
-
-// server
-//   .listen(port)
-//   .then(({ parent, args }) => {
-//     console.log(`Server running at ${port}`);
-//   })
-//   .catch((error) => console.log(error));
+server
+  .listen(port)
+  .then(({ parent, args }) => {
+    console.log(`Server running at ${port}`);
+  })
+  .catch((error) => console.log(error));
 
 ////////////////////// Using Express GraphQL /////////////////////////
 
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
+// const express = require("express");
+// const { graphqlHTTP } = require("express-graphql");
 
-const app = express();
+// const app = express();
 
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
+// app.use(
+//   "/graphql",
+//   graphqlHTTP({
+//     schema,
+//     graphiql: true,
+//   })
+// );
 
-app.listen(port, () => {
-  console.log("Server running on port 4000");
-});
+// app.listen(port, () => {
+//   console.log("Server running on port 4000");
+// });
