@@ -5,37 +5,52 @@ const authors = require("./schema/Author Model.json");
 const books = require("./schema/Book Model.json");
 const lodash = require("lodash");
 
-const port = 4000;
 
-const typeDefs = gql`
-  type Book {
-    id: String!
-    title: String!
-    genre: String!
-    pages: Int!
-  }
+const mongoose = require("mongoose")
 
-  type Query {
-    book(id: String): Book
-    books: [Book]
-  }
-`;
+const connectionUrl = 'mongodb+srv://othniel:atlaspassword@cluster0.pnki9.mongodb.net/test?retryWrites=true&w=majority';
 
-const resolvers = {
-  Query: {
-    books: () => books,
-    book: (parent, args) => lodash.find(books, { id: args.id }),
-  },
-};
+mongoose.connect(connectionUrl, {
+  useNewUrlParser: true,
+  useUnifiedToplogy: true
+}).then(() => { console.log('Database connection successful'); })
+  .catch((error) => console.log(`Could not connect to database:\n${error}`));
 
-const server = new ApolloServer({ typeDefs, resolvers });
+// const port = 4000;
 
-server
-  .listen(port)
-  .then(({ parent, args }) => {
-    console.log(`Server running at ${port}`);
-  })
-  .catch((error) => console.log(error));
+// const typeDefs = gql`
+//   type Book {
+//     id: String!
+//     title: String!
+//     genre: String!
+//     pages: Int!
+//   }
+
+//   type Query {
+//     book(id: String): Book
+//     books: [Book]
+//   }
+
+//   # type Mutation {
+
+//   # }
+// `
+
+// const resolvers = {
+//   Query: {
+//     books: () => books,
+//     book: (parent, args) => lodash.find(books, { id: args.id }),
+//   },
+// };
+
+// const server = new ApolloServer({ typeDefs, resolvers });
+
+// server
+//   .listen(port)
+//   .then(({ parent, args }) => {
+//     console.log(`Server running at ${port}`);
+//   })
+//   .catch((error) => console.log(error));
 
 ////////////////////// Using Express GraphQL /////////////////////////
 
