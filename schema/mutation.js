@@ -16,10 +16,10 @@ const Mutation = new graphql.GraphQLObjectType({
       },
       resolve(parent, args) {
         var postID = uuid.v4();
-        var today = new Date();
+        var today = new Date().toUTCString();
         let data = args;
 
-        data.createdAt = String(today);
+        data.createdAt = today;
         data.id = postID;
         data.likes = 0;
         data.comments = 0;
