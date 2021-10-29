@@ -1,27 +1,19 @@
 var mongoose = require("mongoose");
 
-var BlogSchema = mongoose.Schema({
+var CommentSchema = mongoose.Schema({
   _id: {
     type: String,
-    required: false,
-  },
-  comments: {
-    type: Number,
-    required: false,
-  },
-  likes: {
-    type: Number,
     required: false,
   },
   text: {
     type: String,
     required: false,
   },
-  banner: {
+  authorID: {
     type: String,
     required: false,
   },
-  author: {
+  postID: {
     type: String,
     required: false,
   },
@@ -31,6 +23,6 @@ var BlogSchema = mongoose.Schema({
   },
 });
 
-const Blog = new mongoose.model("Blogg", BlogSchema, "blogs");
+const CommentModel = new mongoose.model("comments", CommentSchema);
 
-module.exports = Blog;
+module.exports = CommentModel;
