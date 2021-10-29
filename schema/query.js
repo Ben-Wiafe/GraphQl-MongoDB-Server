@@ -5,6 +5,7 @@ const bookType = require("./type_defs/book_type");
 const postType = require("./type_defs/post_type");
 const commentType = require("./type_defs/comment_type");
 const authorType = require("./type_defs/author_type");
+const posts = require("../posts");
 
 const RootQuery = new graphql.GraphQLObjectType({
   name: "RootQueryType",
@@ -23,7 +24,7 @@ const RootQuery = new graphql.GraphQLObjectType({
     posts: {
       type: new graphql.GraphQLList(postType),
       resolve(parent, args) {
-        return true;
+        return posts;
       },
     },
 
