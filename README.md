@@ -1,0 +1,2 @@
+# GraphQl-MongoDB-Server
+Optional
