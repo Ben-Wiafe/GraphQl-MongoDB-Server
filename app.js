@@ -47,9 +47,9 @@ const { graphqlHTTP } = require("express-graphql");
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Home Page')
-})
+app.get("/", (req, res) => {
+  res.send("Home Page");
+});
 
 app.use(
   "/graphql",
