@@ -1,7 +1,4 @@
 const graphql = require("graphql");
-const lodash = require("lodash");
-const books = require("./Book Model.json");
-const bookType = require("./type_defs/book_type");
 const postType = require("./type_defs/post_type");
 const commentType = require("./type_defs/comment_type");
 const authorType = require("./type_defs/author_type");
