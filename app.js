@@ -1,5 +1,4 @@
 const { ApolloServer, gql } = require("apollo-server");
-
 const schema = require("./schema/schema");
 const authors = require("./schema/Author Model.json");
 const books = require("./schema/Book Model.json");
@@ -10,10 +9,9 @@ const port = 4000;
 // const typeDefs = gql`
 //   type Book {
 //     id: String!
-//     name: String!
+//     title: String!
 //     genre: String!
 //     pages: Int!
-//     author:
 //   }
 
 //   type Query {
@@ -22,9 +20,9 @@ const port = 4000;
 //   }
 
 //   # type Mutation {
-//   #   add_book
+
 //   # }
-// `;
+// `
 
 // const resolvers = {
 //   Query: {
@@ -66,6 +64,10 @@ mongoose.connect('mongodb://localhost:27017/testData')
        module.exports = mongoose.model('collectionname=', book);
 
 const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Home Page')
+})
 
 app.use(
   "/graphql",
