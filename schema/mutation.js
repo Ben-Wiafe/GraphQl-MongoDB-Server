@@ -1,39 +1,32 @@
 const graphql = require("graphql");
-const books = require("./mock_data");
-const BookType = require("./type_defs/book_type");
+const PostType = require("./type_defs/post_type");
+const CommentType = require("./type_defs/comment_type");
+const uuid = require("uuid");
+const posts = require("../posts");
 
 const Mutation = new graphql.GraphQLObjectType({
   name: "Mutation",
   fields: {
-    add_book: {
-      type: BookType,
+    create_blog: {
+      type: PostType,
       args: {
-        title: { type: graphql.GraphQLString },
-        genre: { type: graphql.GraphQLString },
-        isbn: { type: graphql.GraphQLString },
-        pages: { type: graphql.GraphQLString },
+        text: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
+        banner: { type: graphql.GraphQLString },
+        authorID: { type: graphql.GraphQLString },
       },
       resolve(parent, args) {
-        books.push({
-          id: graphql.GraphQLID,
-          title: args.title,
-          genre: args.genre,
-          isbn: args.isbn,
-          pages: args.pages,
-        });
-        return args.id;
-      },
-    },
+        var postID = uuid.v4();
+        var today = new Date();
+        let data = args;
 
-    update_book: {
-      type: BookType,
-      args: {
-        id: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
-        title: { type: graphql.GraphQLString },
-        genre: { type: graphql.GraphQLString },
-      },
-      resolve(parent, args) {
-        //
+        data.createdAt = String(today);
+        data.id = postID;
+        data.likes = 0;
+        data.comments = 0;
+
+        posts.push(data);
+
+        // Write code here to insert the "data" object into database
       },
     },
   },
