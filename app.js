@@ -1,22 +1,10 @@
 const { ApolloServer, gql } = require("apollo-server");
-
 const schema = require("./schema/schema");
 const authors = require("./schema/Author Model.json");
 const books = require("./schema/Book Model.json");
 const lodash = require("lodash");
 
-
-const mongoose = require("mongoose")
-
-const connectionUrl = 'mongodb+srv://othniel:atlaspassword@cluster0.pnki9.mongodb.net/test?retryWrites=true&w=majority';
-
-mongoose.connect(connectionUrl, {
-  useNewUrlParser: true,
-  useUnifiedToplogy: true
-}).then(() => { console.log('Database connection successful'); })
-  .catch((error) => console.log(`Could not connect to database:\n${error}`));
-
-// const port = 4000;
+const port = 4000;
 
 // const typeDefs = gql`
 //   type Book {
@@ -54,19 +42,23 @@ mongoose.connect(connectionUrl, {
 
 ////////////////////// Using Express GraphQL /////////////////////////
 
-// const express = require("express");
-// const { graphqlHTTP } = require("express-graphql");
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
 
-// const app = express();
+const app = express();
 
-// app.use(
-//   "/graphql",
-//   graphqlHTTP({
-//     schema,
-//     graphiql: true,
-//   })
-// );
+app.get('/', (req, res) => {
+  res.send('Home Page')
+})
 
-// app.listen(port, () => {
-//   console.log("Server running on port 4000");
-// });
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
+
+app.listen(port, () => {
+  console.log("Server running on port 4000");
+});
