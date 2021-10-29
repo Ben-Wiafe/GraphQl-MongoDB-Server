@@ -22,7 +22,12 @@ const Mutation = new graphql.GraphQLObjectType({
         data._id = postID;
         data.likes = 0;
         data.comments = 0;
-        
+
+        // Write code here to insert the "data" object into database
+        var blog = Blog(args);
+
+        console.log(blog);
+
         blog.save(function (err, blogg) {
           if (err) return console.error(err);
           console.log("Saved to blogs collection");
