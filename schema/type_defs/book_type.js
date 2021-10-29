@@ -1,6 +1,14 @@
 const graphql = require("graphql");
 
-const BookType = new graphql.GraphQLObjectType({
+const BlogPost = new graphql.GraphQLObjectType({
+  name: "Post",
+  fields: () => ({
+    id: { type: graphql.GraphQLString },
+    title: { type: graphql.GraphQLString },
+    likes: { type: graphql.GraphQLString },
+    comment: { type: graphql.GraphQLString },
+    author: { type: graphql.GraphQLString },
+  }),
   name: "Book",
   fields: () => ({
     id: { type: graphql.GraphQLString },
@@ -13,4 +21,4 @@ const BookType = new graphql.GraphQLObjectType({
 
 
 
-module.exports = BookType;
+module.exports = BlogPost;

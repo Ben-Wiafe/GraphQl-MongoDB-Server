@@ -1,13 +1,12 @@
 const graphql = require("graphql");
-const books = require("./mock_data");
 const BookType = require("./type_defs/book_type");
 
 const Mutation = new graphql.GraphQLObjectType({
   name: "Mutation",
   fields: {
-    add_book: {
+    add_book: {   
       type: BookType,
-      args: {
+      args: { 
         title: { type: graphql.GraphQLString },
         genre: { type: graphql.GraphQLString },
         isbn: { type: graphql.GraphQLString },

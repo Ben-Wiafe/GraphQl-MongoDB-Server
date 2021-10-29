@@ -44,24 +44,27 @@ const port = 4000;
 
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/testData')
-.then(()=>{
-  console.log("Connected..");
-})
-.catch(error => handleError(error));
+mongoose
+  .connect(
+    "mongodb+srv://azaygenius:Password@Cluster0.prlnz.mongodb.net/Cluster0?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("Connected..");
+  })
+  .catch((error) => console.log(error));
 
-  var Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-   var book = new Schema({
-     title:  String,
-     author: String,
-      pages: Number,
-      isbn: String,
-      genre: String
-   }); 
-       module.exports = mongoose.model('collectionname=', book);
+var book = new Schema({
+  title: String,
+  author: String,
+  pages: Number,
+  isbn: String,
+  genre: String,
+});
+module.exports = mongoose.model("collection ", book);
 
 const app = express();
 
@@ -77,9 +80,9 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.listen(port, () => {
   console.log("Server running on port 4000");
