@@ -2,7 +2,9 @@ const graphql = require("graphql");
 const postType = require("./type_defs/post_type");
 const commentType = require("./type_defs/comment_type");
 const authorType = require("./type_defs/author_type");
-const posts = require("../posts");
+const BlogModel = require("../schema/models/blog_model");
+const CommentModel = require("../schema/models/comment_model");
+const AuthorModel = require("../schema/models/author_model");
 
 const RootQuery = new graphql.GraphQLObjectType({
   name: "RootQueryType",
@@ -10,25 +12,27 @@ const RootQuery = new graphql.GraphQLObjectType({
     post: {
       type: postType,
       args: {
-        id: { type: graphql.GraphQLID },
+        id: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
       },
-      resolve(parent, args) {
-        // find post where id === args.id
-        return true;
+      async resolve(parent, args) {
+        var doc = await BlogModel.findById(args._id);
+        console.log(doc);
+        return doc;
       },
     },
 
     posts: {
       type: new graphql.GraphQLList(postType),
       resolve(parent, args) {
-        return posts;
+        var docs = BlogModel.find();
+        return docs;
       },
     },
 
     comment: {
       type: commentType,
       args: {
-        id: { type: graphql.GraphQLID },
+        id: { type: new graphql.GraphQLNonNull(graphql.GraphQLID) },
       },
       resolve(parent, args) {
         // find comment where id === args.id
@@ -39,14 +43,15 @@ const RootQuery = new graphql.GraphQLObjectType({
     comments: {
       type: new graphql.GraphQLList(commentType),
       resolve(parent, args) {
-        return true;
+        var docs = CommentModel.find();
+        return docs;
       },
     },
 
     author: {
       type: authorType,
       args: {
-        id: { type: graphql.GraphQLString },
+        id: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
         username: { type: graphql.GraphQLString },
       },
       resolve(parent, args) {
